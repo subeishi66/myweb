@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      overflow: hidden;
+    }
+
+   .message-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+   .message {
+      font-size: 72px;
+      color: #fff;
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+      }
+
+      to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff66ff, 0 0 40px #ff66ff, 0 0 50px #ff66ff, 0 0 80px #ff66ff, 0 0 100px #ff66ff, 0 0 120px #ff66ff, 0 0 150px #ff66ff;
+      }
+    }
+
+   .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background-color: #fff;
+      border-radius: 50%;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0% {
+        opacity: 0.5;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0.5;
+      }
+    }
+
+   .shooting-star {
+      position: absolute;
+      width: 2px;
+      height: 20px;
+      background-color: #fff;
+      opacity: 0;
+      animation: shooting 2s ease-in-out infinite;
+    }
+
+    @keyframes shooting {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      25% {
+        opacity: 1;
+      }
+
+      75% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(200%, -200%) rotate(45deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="message-container">
+    <div class="message">杨振猪</div>
+	<div class="message">愿你的世界璀璨如星，浪漫满溢。</div>
+  </div>
+
+  <!-- 创建多个星星 -->
+  <div class="stars"></div>
+  <script>
+    const starsContainer = document.querySelector('.stars');
+    for (let i = 0; i < 500; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.top = Math.random() * window.innerHeight + 'px';
+      starsContainer.appendChild(star);
+    }
+
+    // 创建多个流星
+    setInterval(() => {
+      const shootingStar = document.createElement('div');
+      shootingStar.className = 'shooting-star';
+      shootingStar.style.left = Math.random() * window.innerWidth + 'px';
+      shootingStar.style.top = Math.random() * window.innerHeight + 'px';
+      document.body.appendChild(shootingStar);
+    }, 1000);
+  </script>
+</body>
+
+</html>
